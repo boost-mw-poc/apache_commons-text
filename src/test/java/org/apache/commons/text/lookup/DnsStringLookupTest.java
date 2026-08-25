@@ -35,29 +35,33 @@ class DnsStringLookupTest {
     @Test
     void testAddressFromHostAddress() throws UnknownHostException {
         final InetAddress localHost = InetAddress.getLocalHost();
-        assertEquals(localHost.getHostAddress(),
-            DnsStringLookup.INSTANCE.apply("address|" + localHost.getHostAddress()));
+        assertEquals(localHost.getHostAddress(), DnsStringLookup.INSTANCE.apply("address|" + localHost.getHostAddress()));
     }
 
     @Test
     void testAddressFromHostName() throws UnknownHostException {
         final InetAddress localHost = InetAddress.getLocalHost();
-        assertEquals(localHost.getHostAddress(),
-            DnsStringLookup.INSTANCE.apply("address|" + localHost.getHostName()));
+        assertEquals(localHost.getHostAddress(), DnsStringLookup.INSTANCE.apply("address|" + localHost.getHostName()));
     }
 
     @Test
     void testCanonicalNameFromHostAddress() throws UnknownHostException {
         final InetAddress localHost = InetAddress.getLocalHost();
-        assertEquals(localHost.getCanonicalHostName(),
-            DnsStringLookup.INSTANCE.apply("canonical-name|" + localHost.getHostAddress()));
+        assertEquals(localHost.getCanonicalHostName(), DnsStringLookup.INSTANCE.apply("canonical-name|" + localHost.getHostAddress()));
     }
 
     @Test
     void testCanonicalNameFromHostName() throws UnknownHostException {
         final InetAddress localHost = InetAddress.getLocalHost();
-        assertEquals(localHost.getCanonicalHostName(),
-            DnsStringLookup.INSTANCE.apply("canonical-name|" + localHost.getHostName()));
+        assertEquals(localHost.getCanonicalHostName(), DnsStringLookup.INSTANCE.apply("canonical-name|" + localHost.getHostName()));
+    }
+
+    @Test
+    void testDelimiterOnlyKey() {
+        // A key that is only delimiter/whitespace splits to an empty array; must not throw.
+        assertNull(DnsStringLookup.INSTANCE.apply("|"));
+        assertNull(DnsStringLookup.INSTANCE.apply("||"));
+        assertNull(DnsStringLookup.INSTANCE.apply("  |  "));
     }
 
     @Test
@@ -74,14 +78,6 @@ class DnsStringLookupTest {
     }
 
     @Test
-    void testDelimiterOnlyKey() {
-        // A key that is only delimiter/whitespace splits to an empty array; must not throw.
-        assertNull(DnsStringLookup.INSTANCE.apply("|"));
-        assertNull(DnsStringLookup.INSTANCE.apply("||"));
-        assertNull(DnsStringLookup.INSTANCE.apply("  |  "));
-    }
-
-    @Test
     void testNull() {
         assertNull(DnsStringLookup.INSTANCE.apply(null));
     }
@@ -91,5 +87,4 @@ class DnsStringLookupTest {
         // does not blow up and gives some kind of string.
         assertFalse(DnsStringLookup.INSTANCE.toString().isEmpty());
     }
-
 }
