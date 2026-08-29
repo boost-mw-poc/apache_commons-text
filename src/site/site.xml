@@ -32,13 +32,14 @@
       <item name="Dependency Management" href="/dependency-info.html" />
       <item name="Sources" href="/scm.html" />
       <item name="Security">
-      	<item name="Security" href="security.html" />
+      	<item name="Security Vulnerabilities" href="/security.html" />
+      	<item name="Commons Security Model" href="https://commons.apache.org/security.html" />
       </item>
       <item name="License" href="https://www.apache.org/licenses/LICENSE-2.0" />
       <item name="Code of Conduct" href="https://www.apache.org/foundation/policies/conduct.html" />
       <item name="Download" href="https://commons.apache.org/proper/commons-text/download_text.cgi" />
       <item name="Javadoc">
-        <item name="Javadoc Current" href="apidocs/index.html" />
+        <item name="Javadoc Current" href="/apidocs/index.html" />
         <item name="Javadoc Archive" href="https://javadoc.io/doc/org.apache.commons/commons-text/" />
       </item>
       <!-- End: For all components. -->
