@@ -504,10 +504,10 @@
 	  </dependencies>
     </profile>
     <profile>
-	    <!-- Java 22 and up -->
-      <id>java-22-up</id>
+	  <!-- Java 25 and up -->
+      <id>java-25-up</id>
       <activation>
-		<jdk>[22,)</jdk>
+		<jdk>[25,)</jdk>
 	  </activation>
       <properties>
         <graalvm.version>25.3.4.1</graalvm.version>
